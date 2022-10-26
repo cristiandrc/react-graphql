@@ -21,7 +21,6 @@ const Persons = ({ persons }) => {
 
   const showPerson = (name) => {
     getPerson({ variables: { name } });
-    console.log("hola", person);
   };
 
   useEffect(() => {

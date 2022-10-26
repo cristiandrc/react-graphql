@@ -1,9 +1,10 @@
 import reactLogo from "./assets/react.svg";
 import "./App.css";
 import { gql, useQuery } from "@apollo/client";
+import PersonForm from "./PersonForm";
 import Persons from "./Persons";
 
-const ALL_PERSONS = gql`
+export const ALL_PERSONS = gql`
   query {
     allPersons {
       id
@@ -39,6 +40,7 @@ function App() {
           <Persons persons={data.allPersons} />
         </>
       )}
+      <PersonForm />
     </div>
   );
 }
