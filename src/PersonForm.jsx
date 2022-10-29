@@ -1,12 +1,12 @@
 import { useState } from "react";
 import useCreatePerson from "./hooks/useCreatePerson";
 
-const PersonForm = () => {
+const PersonForm = ({ notifyError }) => {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [street, setStreet] = useState("");
   const [city, setCity] = useState("");
-  const [createPerson] = useCreatePerson();
+  const [createPerson] = useCreatePerson({ notifyError });
 
   const handleSubmit = (e) => {
     e.preventDefault();
