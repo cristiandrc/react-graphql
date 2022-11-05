@@ -6,10 +6,14 @@ import Persons from "./Persons";
 import usePersons from "./hooks/usePersons";
 import { useState } from "react";
 import Notify from "./Notify";
+import LoginForm from "./LoginForm";
 
 function App() {
   const { data, loading, error } = usePersons();
   const [errorMessage, setErrorMessage] = useState(null);
+  const [token, setToken] = useState(() =>
+    localStorage.getItem("phoneNumber-user-token")
+  );
 
   if (error) return <span style="color: red:">{error}</span>;
 
@@ -36,6 +40,7 @@ function App() {
           <Persons persons={data.allPersons} />
         </>
       )}
+      {!token && <LoginForm notifyError={notifyError} setToken={setToken} />}
       <PersonForm notifyError={notifyError} />
       <PhoneForm notifyError={notifyError} />
     </div>
